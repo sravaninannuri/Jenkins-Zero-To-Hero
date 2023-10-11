@@ -28,7 +28,7 @@ pipeline {
       steps {
         script {
                 sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app'
-                dockerImage = docker.build registry
+                sh 'docker build -t ${registry} .'
                 docker.withRegistry( '', registryCredential ) {
                     dockerImage.push()
             }
