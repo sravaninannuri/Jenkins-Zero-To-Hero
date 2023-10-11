@@ -27,8 +27,9 @@ pipeline {
       }
       steps {
         script {
-               sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app'
+               // sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app'
                  docker.withRegistry('https://registry-1.docker.io/v2/', 'docker-cred') {
+                         sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app'
                         // Here, you can perform Docker-related actions, such as building and pushing images
                         sh "docker build -t sravanisuresh/ultimate-cicd:${BUILD_NUMBER} ."
                         sh "docker push sravanisuresh/ultimate-cicd:${BUILD_NUMBER}"
